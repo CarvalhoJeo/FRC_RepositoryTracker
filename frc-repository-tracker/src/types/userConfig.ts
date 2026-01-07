@@ -10,7 +10,7 @@ export interface userConfiguration {
 }
 
 export interface userConfigurationProps {
-  isUserConfigurationPopUpOpen: boolean;
+  isUserConfigurationPopUpOpen?: boolean;
   closeUserConfigurationPopUp: () => void;
-  openUserConfigurationPopUp: () => void;
+  openUserConfigurationPopUp?: () => void;
 }

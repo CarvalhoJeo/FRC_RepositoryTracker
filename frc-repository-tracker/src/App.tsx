@@ -5,9 +5,10 @@ import { EmptyState } from './components/EmptyState';
 import { ErrorBanner } from './components/ErrorBanner';
 import { LoadingIndicator } from './components/LoadingIndicator';
 import { useRepositoryTracker } from './hooks/useRepositoryTracker';
+import { UserConfigurationPopUp } from './components/UserConfigurationPopUp';
+
 import { usePopupControls } from './hooks/useUserConfigurationPopUpControl';
 import type { RepositoryDetails, RepositoryIdentifier } from './types/github';
-import { useState } from 'react';
 
 const EXAMPLE_REPOSITORY_DETAILS: RepositoryDetails = {
   summary: {
@@ -35,6 +36,7 @@ function App() {
 
   const { isUserConfigurationPopUpOpen, closeUserConfigurationPopUp, openUserConfigurationPopUp } =
     usePopupControls();
+  const showExampleSummary = !details && !isLoading && !error;
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -67,17 +69,22 @@ function App() {
               <ActivityList commits={details.latestActivity} />
             </>
           )}
-          <>
-            <EmptyState />
-            <div className="space-y-3 rounded-2xl border border-dashed border-slate-200 bg-white/70 p-4 text-sm text-slate-600 shadow-sm">
-              <p>
-                Example summary preview — the card below renders <code>RepoSummary</code> with
-                robotics data so you can see how it looks before searching.
-              </p>
-              <RepoSummary details={EXAMPLE_REPOSITORY_DETAILS} />
-            </div>
-          </>
+          {showExampleSummary && (
+            <>
+              <EmptyState />
+              <div className="space-y-3 rounded-2xl border border-dashed border-slate-200 bg-white/70 p-4 text-sm text-slate-600 shadow-sm">
+                <p>
+                  Example summary preview — the card below renders <code>RepoSummary</code> with
+                  robotics data so you can see how it looks before searching.
+                </p>
+                <RepoSummary details={EXAMPLE_REPOSITORY_DETAILS} />
+              </div>
+            </>
+          )}
         </main>
+        {isUserConfigurationPopUpOpen && (
+          <UserConfigurationPopUp closeUserConfigurationPopUp={closeUserConfigurationPopUp} />
+        )}
       </div>
     </div>
   );
