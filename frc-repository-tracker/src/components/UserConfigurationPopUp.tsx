@@ -6,7 +6,8 @@ export function UserConfigurationPopUp({ closeUserConfigurationPopUp }: userConf
     event.preventDefault();
     closeUserConfigurationPopUp();
   };
-
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 px-4 py-8">
       <form

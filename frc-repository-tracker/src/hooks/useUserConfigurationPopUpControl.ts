@@ -5,7 +5,11 @@ export function usePopupControls(): userConfigurationProps {
   const [isOpen, setIsOpen] = useState(false);
   return {
     isUserConfigurationPopUpOpen: isOpen,
-    closeUserConfigurationPopUp: () => setIsOpen(false),
+    closeUserConfigurationPopUp: () => {
+      setIsOpen(false);
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    },
     openUserConfigurationPopUp: () => setIsOpen(true),
   };
 }
