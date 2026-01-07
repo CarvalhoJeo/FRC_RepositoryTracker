@@ -47,7 +47,6 @@ export function SearchBar({
         <input
           id="owner"
           name="owner"
-          placeholder="facebook"
           value={owner}
           onChange={(event) => setOwner(event.target.value)}
           className="rounded-xl border border-slate-200 px-3 py-2 text-base text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/50"
@@ -60,7 +59,6 @@ export function SearchBar({
         <input
           id="repository"
           name="repository"
-          placeholder="react"
           value={name}
           onChange={(event) => setName(event.target.value)}
           className="rounded-xl border border-slate-200 px-3 py-2 text-base text-slate-900 outline-none transition focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/50"

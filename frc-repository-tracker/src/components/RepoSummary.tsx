@@ -1,14 +1,13 @@
-import type { RepositoryDetails } from '../types/github'
+import type { RepositoryDetails } from '../types/github';
 
 interface RepoSummaryProps {
-  details: RepositoryDetails
+  details: RepositoryDetails;
 }
 
-const formatNumber = (value: number) =>
-  new Intl.NumberFormat().format(value ?? 0)
+const formatNumber = (value: number) => new Intl.NumberFormat().format(value ?? 0);
 
 export function RepoSummary({ details }: RepoSummaryProps) {
-  const { summary, fetchedAt } = details
+  const { summary, fetchedAt } = details;
 
   return (
     <section className="space-y-6 rounded-2xl bg-white p-6 shadow-md shadow-slate-200">
@@ -25,27 +24,19 @@ export function RepoSummary({ details }: RepoSummaryProps) {
           </span>
         )}
       </header>
-      {summary.description && (
-        <p className="text-base text-slate-600">{summary.description}</p>
-      )}
+      {summary.description && <p className="text-base text-slate-600">{summary.description}</p>}
       <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-xl border border-slate-100 p-4">
           <dt className="text-sm text-slate-500">Stars</dt>
-          <dd className="text-2xl font-semibold text-slate-900">
-            {formatNumber(summary.stars)}
-          </dd>
+          <dd className="text-2xl font-semibold text-slate-900">{formatNumber(summary.stars)}</dd>
         </div>
         <div className="rounded-xl border border-slate-100 p-4">
           <dt className="text-sm text-slate-500">Forks</dt>
-          <dd className="text-2xl font-semibold text-slate-900">
-            {formatNumber(summary.forks)}
-          </dd>
+          <dd className="text-2xl font-semibold text-slate-900">{formatNumber(summary.forks)}</dd>
         </div>
         <div className="rounded-xl border border-slate-100 p-4">
           <dt className="text-sm text-slate-500">Open issues</dt>
-          <dd className="text-2xl font-semibold text-slate-900">
-            {formatNumber(summary.issues)}
-          </dd>
+          <dd className="text-2xl font-semibold text-slate-900">{formatNumber(summary.issues)}</dd>
         </div>
         <div className="rounded-xl border border-slate-100 p-4">
           <dt className="text-sm text-slate-500">Watchers</dt>
@@ -56,7 +47,7 @@ export function RepoSummary({ details }: RepoSummaryProps) {
       </dl>
       <div className="flex flex-wrap gap-2">
         {summary.topics.length ? (
-          summary.topics.map((topic) => (
+          summary.topics.map(topic => (
             <span
               key={topic}
               className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700"
@@ -69,5 +60,5 @@ export function RepoSummary({ details }: RepoSummaryProps) {
         )}
       </div>
     </section>
-  )
+  );
 }

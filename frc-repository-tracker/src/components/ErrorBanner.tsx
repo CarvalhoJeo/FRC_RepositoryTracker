@@ -1,5 +1,5 @@
 interface ErrorBannerProps {
-  message: string
+  message: string;
 }
 
 export function ErrorBanner({ message }: ErrorBannerProps) {
@@ -13,5 +13,5 @@ export function ErrorBanner({ message }: ErrorBannerProps) {
         Check the repository owner/name or wait a bit if you hit the GitHub rate limit.
       </p>
     </div>
-  )
+  );
 }

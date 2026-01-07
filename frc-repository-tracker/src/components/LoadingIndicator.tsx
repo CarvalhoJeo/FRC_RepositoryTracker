@@ -10,5 +10,5 @@ export function LoadingIndicator() {
       />
       <p>Fetching repository details…</p>
     </div>
-  )
+  );
 }

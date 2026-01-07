@@ -4,9 +4,7 @@ export function EmptyState() {
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-indigo-500">
         Repository tracker
       </p>
-      <h2 className="text-2xl font-semibold text-slate-900">
-        Track any public GitHub repository
-      </h2>
+      <h2 className="text-2xl font-semibold text-slate-900">Track any public GitHub repository</h2>
       <p>
         Enter the <strong>owner</strong> and <strong>repository name</strong> to fetch summary
         information plus the five most recent commits.
@@ -17,5 +15,5 @@ export function EmptyState() {
         <li>Experiment with GitHub&apos;s REST API from a friendly UI.</li>
       </ul>
     </section>
-  )
+  );
 }
