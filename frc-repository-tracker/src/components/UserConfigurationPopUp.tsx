@@ -1,9 +1,22 @@
-import type { FormEvent } from 'react';
+import { use, useState, type FormEvent } from 'react';
 import type { userConfigurationProps } from '../types/userConfig';
+import type { userConfiguration } from '../types/userConfig';
+import type { teamConfiguration } from '../types/userConfig';
+import { storeConfiguration } from '../services/configurationStorage';
 
 export function UserConfigurationPopUp({ closeUserConfigurationPopUp }: userConfigurationProps) {
+  const [teamConfig, setTeamConfig] = useState<teamConfiguration>({
+    team_number: '0',
+    team_color: '#4f46e5',
+  });
+
+  const [userConfig, setUserConfig] = useState<userConfiguration>({
+    github_token: 'ghp_XXXXXXXXXXXXXXXXXXXX',
+  });
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    storeConfiguration(userConfig, teamConfig);
     closeUserConfigurationPopUp();
   };
   document.documentElement.style.overflow = 'hidden';
@@ -35,6 +48,12 @@ export function UserConfigurationPopUp({ closeUserConfigurationPopUp }: userConf
                 placeholder="e.g. 254"
                 type="number"
                 min="1"
+                onChange={e =>
+                  setTeamConfig({
+                    team_color: teamConfig.team_color,
+                    team_number: e.target.value,
+                  })
+                }
               />
             </label>
             <label className="space-y-1 text-sm font-medium text-slate-700">
@@ -44,6 +63,12 @@ export function UserConfigurationPopUp({ closeUserConfigurationPopUp }: userConf
                   type="color"
                   className="h-10 w-10 cursor-pointer rounded-md border border-slate-300 bg-transparent"
                   defaultValue="#4f46e5"
+                  onChange={e =>
+                    setTeamConfig({
+                      team_color: e.target.value,
+                      team_number: teamConfig.team_number,
+                    })
+                  }
                 />
                 <span className="text-sm text-slate-500">Used for accents in the dashboard.</span>
               </div>
@@ -59,6 +84,11 @@ export function UserConfigurationPopUp({ closeUserConfigurationPopUp }: userConf
               className="w-full rounded-xl border border-slate-200 px-3 py-2 text-base text-slate-900 outline-none ring-indigo-200 transition focus:border-indigo-400 focus:ring-2"
               placeholder="ghp_XXXXXXXXXXXXXXXXXXXX"
               type="password"
+              onChange={e =>
+                setUserConfig({
+                  github_token: e.target.value,
+                })
+              }
             />
           </label>
           <p className="text-xs text-slate-500">

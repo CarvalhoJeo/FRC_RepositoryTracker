@@ -1,8 +1,8 @@
 type HEX = `#${string}`;
 
 export interface teamConfiguration {
-  team_number: number;
-  team_color: HEX;
+  team_number: string;
+  team_color: string;
 }
 
 export interface userConfiguration {
